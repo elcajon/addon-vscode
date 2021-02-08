@@ -14,14 +14,9 @@
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
-
 ## About
 
-This is an VSCode add-on for Home Assistant. 
-
-
-
-
+This is an VSCode add-on for Home Assistant.
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
