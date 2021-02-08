@@ -1,4 +1,4 @@
-# Home Assistant Community Add-on: Example
+# Home Assistant Add-on: VSCode
 
 ![Project Stage][project-stage-shield]
 [![License][license-shield]](LICENSE.md)
