@@ -108,6 +108,7 @@ jobs:
       - name: 🚀 Build and push
         uses: docker/build-push-action@v2.2.2
         with:
+          buildkitd-flags: --debug
           push: true
           # yamllint disable rule:line-length
           tags: |
