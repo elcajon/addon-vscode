@@ -45,4 +45,4 @@ This is an VSCode add-on for Home Assistant.
 [reddit]: https://reddit.com/r/homeassistant
 [releases-shield]: https://img.shields.io/github/release/elcajon/addon-vscode.svg
 [releases]: https://github.com/elcajon/addon-vscode/releases
-[repository]: https://github.com/hassio-addons/repository 
+[repository]: https://github.com/hassio-addons/repository
