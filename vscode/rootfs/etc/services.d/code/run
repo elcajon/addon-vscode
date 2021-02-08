@@ -1,0 +1,25 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Visual Studio Code
+# Runs the code server
+# ==============================================================================
+declare -a options
+
+bashio::log.info 'Starting the code server...'
+
+options+=(--port 1337)
+options+=(--user-data-dir "/data/vscode")
+options+=(--extra-builtin-extensions-dir "/root/.code-server/extensions/")
+options+=(--extensions-dir "/data/vscode/extensions")
+options+=(--host 0.0.0.0)
+options+=(--disable-telemetry)
+
+# Disable code authentication, we use HA authentication
+options+=(--auth none)
+
+# Export env variables for the Home Assistant extension
+export HASS_SERVER="http://supervisor/core"
+export HASS_TOKEN="${SUPERVISOR_TOKEN:-}"
+
+# Run the code server
+exec code-server "${options[@]}" /workspace

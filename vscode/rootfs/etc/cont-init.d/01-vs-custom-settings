@@ -1,0 +1,33 @@
+#!/usr/bin/with-contenv bashio
+if [ ! -d /workspace ] ; then
+    mkdir /workspace
+fi
+
+if [ ! -d /workspace/config ] ; then
+    ln -s /config /workspace/config
+fi
+
+if [ ! -d /workspace/addons ] ; then
+    ln -s /addons /workspace/addons
+fi
+
+if [ ! -d /workspace/backup ] ; then
+    ln -s /backup /workspace/backup
+fi
+
+if [ ! -d /workspace/share ] ; then
+    ln -s /share /workspace/share
+fi
+
+if [ ! -d /workspace/ssl ] ; then
+    ln -s /ssl /workspace/ssl
+fi
+
+if [ ! -d /workspace/media ] ; then
+    ln -s /media /workspace/media
+fi
+
+if [ ! -d /workspace/workspace ] ; then
+    mkdir -p /data/vscode/workspace
+    ln -s /data/vscode/workspace /workspace/workspace
+fi

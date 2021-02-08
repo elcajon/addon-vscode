@@ -1,0 +1,1 @@
+APT::Periodic::RandomSleep 0;

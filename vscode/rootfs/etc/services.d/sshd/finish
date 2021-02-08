@@ -1,0 +1,13 @@
+#!/bin/bash
+# ==============================================================================
+# Home Assistant Community Add-on: Visual Studio Code
+# Take down the S6 supervision tree when the ssh server fails
+# ==============================================================================
+
+SUPERVISED_DIR=/var/run/s6/services
+
+# hack: this is run-once service
+# stop the s6-supervise process and ensure that its not started again
+s6-svc -x ${SUPERVISED_DIR}/sshd
+rm -rf ${SUPERVISED_DIR}/sshd
+s6-svscanctl -a ${SUPERVISED_DIR}

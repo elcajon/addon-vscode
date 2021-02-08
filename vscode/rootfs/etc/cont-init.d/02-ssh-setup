@@ -1,0 +1,47 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Visual Studio Code
+# Pre-configures the SSH server
+# ==============================================================================
+ssh_port=$(bashio::addon.port 22)
+if bashio::var.has_value "${ssh_port}"; then
+
+    readonly SSH_AUTHORIZED_KEYS_PATH=/data/vscode/.ssh/authorized_keys
+    readonly SSH_HOST_ED25519_KEY=/data/sshd/ssh_host_ed25519_key
+    mkdir -p /data/sshd
+    readonly SSH_HOST_RSA_KEY=/data/sshd/ssh_host_rsa_key
+    readonly SSH_CONFIG_PATH=/etc/ssh/sshd_config
+
+    # Generate host keys
+    if ! bashio::fs.file_exists "${SSH_HOST_RSA_KEY}"; then
+        bashio::log.notice 'RSA host key missing, generating one...'
+        ssh-keygen -t rsa -f "${SSH_HOST_RSA_KEY}" -N "" \
+            || bashio::exit.nok 'Failed to generate RSA host key'
+    fi
+
+    if ! bashio::fs.file_exists "${SSH_HOST_ED25519_KEY}"; then
+        bashio::log.notice 'ED25519 host key missing, generating one...'
+        ssh-keygen -t ed25519 -f "${SSH_HOST_ED25519_KEY}" -N "" \
+            || bashio::exit.nok 'Failed to generate ED25519 host key'
+    fi
+
+    # Sets up the authorized SSH keys
+    if bashio::config.has_value 'ssh.authorized_keys'; then
+        if [ -f "${SSH_AUTHORIZED_KEYS_PATH}" ]; then
+        rm "${SSH_AUTHORIZED_KEYS_PATH}";
+        fi
+        while read -r key; do
+            echo "${key}" >> "${SSH_AUTHORIZED_KEYS_PATH}"
+        done <<< "$(bashio::config 'ssh.authorized_keys')"
+    fi
+
+    # This enabled less strict ciphers, macs, and keyx.
+    if bashio::config.true 'ssh.compatibility_mode'; then
+        sed -i '/Ciphers\ .*/s/^/#/g' "${SSH_CONFIG_PATH}"
+        sed -i '/MACs\ .*/s/^/#/g' "${SSH_CONFIG_PATH}"
+        sed -i '/KexAlgorithms\.* /s/^/#/g' "${SSH_CONFIG_PATH}"
+        bashio::log.notice 'SSH is running in compatibility mode!'
+        bashio::log.warning 'Compatibility mode is less secure!'
+        bashio::log.warning 'Please only enable it when you know what you are doing!'
+    fi
+fi

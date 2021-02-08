@@ -1,0 +1,20 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Visual Studio Code
+# Runs the ssh server
+# ==============================================================================
+ssh_port=$(bashio::addon.port 22)
+if bashio::var.has_value "${ssh_port}"; then
+    bashio::log.info 'Starting the ssh server...'
+
+    # Bugfix for issue in application core 
+    mkdir -p /run/sshd
+    chmod 0755 -R /run/sshd
+    chown -R root:root /run/sshd
+    touch /var/log/lastlog
+
+    # Run the code server
+    exec /usr/sbin/sshd -D -E /proc/1/fd/1
+else
+    bashio::log.info 'Assign SSH port to activate the ssh server.'
+fi
