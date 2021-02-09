@@ -49,6 +49,5 @@
       "authorized_keys": ["str"],
       "compatibility_mode": "bool"
     }
-  },
-  "image": "elcajon792/hassio-addon-vscode-{arch}"
+  }
 }
