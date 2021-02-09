@@ -65,7 +65,7 @@ RUN \
     curl https://bootstrap.pypa.io/get-pip.py | python3 \
     \
     && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get --no-install-recommends install -y nodejs \
     \
     #&& curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     #&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
@@ -135,8 +135,8 @@ RUN mkdir -p /root/.code-server/extensions \
         /var/lib/apt/lists/*
 
 RUN \
-    apt update \
-    && apt install -y \
+    apt-get update \
+    && apt-get --no-install-recommends install -y \
     unzip \
     cron \
     \
@@ -144,8 +144,8 @@ RUN \
 
 
 RUN \
-    apt update \
-    && apt install openssh-server -y
+    apt-get update \
+    && apt-get --no-install-recommends install openssh-server -y
 
 RUN \
     if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
