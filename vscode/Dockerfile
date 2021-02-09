@@ -36,45 +36,36 @@ RUN \
         net-tools=1.60+git20180626.aebd88e-1 \
         nmap=7.70+dfsg1-6+deb10u1 \
         openssh-client=1:7.9p1-10+deb10u2 \
-        openssl=1.1.1d-0+deb10u4 \
+        openssl \
         python3-dev=3.7.3-1 \
         python3=3.7.3-1 \
-        unzip=6.0-23+deb10u2 \
+        unzip \
         uuid-runtime=2.33.1-0.1 \
         wget=1.20.1-1.1 \
         zip=3.0-11+b1 \
         zsh=5.7.1-1 \
-        pkg-config=0.29-6 \
-        libx11-dev=2:1.6.7-1+deb10u1 \
-        libxkbfile-dev=1:1.0.9-2+b11 \
-        libsecret-1-dev=0.18.7-1 \
-        nano=3.2-3 \
-        apt-transport-https=1.8.2.2 \
-        ca-certificates=20200601~deb10u2 \
-        curl=7.64.0-4+deb10u1 \
-        gnupg=2.2.12-1+deb10u1 \
-        htop=2.2.0-1+b1 \
+        pkg-config \
+        libx11-dev \
+        libxkbfile-dev \
+        libsecret-1-dev \
+        nano \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg \
+        htop \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
-    && locale-gen \
-    && rm -fr \
-    /var/{cache,log}/* \
-    /var/lib/apt/lists/*
+    && locale-gen 
 
 RUN \
-    curl https://get.docker.com | sh \
-    && rm -fr \
-    /var/{cache,log}/* \
-    /var/lib/apt/lists/*
+    curl https://get.docker.com | sh 
 
 RUN \
     curl https://bootstrap.pypa.io/get-pip.py | python3 \
     \
     && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-    && apt-get install -y nodejs=12.20.1-1nodesource1 --no-install-recommends \
-    && rm -fr \
-    /var/{cache,log}/* \
-    /var/lib/apt/lists/* \
+    && apt-get install -y nodejs \
     \
     #&& curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     #&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
@@ -144,25 +135,17 @@ RUN mkdir -p /root/.code-server/extensions \
         /var/lib/apt/lists/*
 
 RUN \
-    apt-get update \
-    && apt-get install -y \
+    apt update \
+    && apt install -y \
     unzip \
-    cron --no-install-recommends \
+    cron \
     \
-    && curl -s https://rclone.org/install.sh | bash \
-    && rm -fr \
-    /tmp/* \
-    /var/{cache,log}/* \
-    /var/lib/apt/lists/*
+    && curl -s https://rclone.org/install.sh | bash 
 
 
 RUN \
-    apt-get update \
-    && apt-get install openssh-server -y --no-install-recommends \
-    && rm -fr \
-    /tmp/* \
-    /var/{cache,log}/* \
-    /var/lib/apt/lists/*
+    apt update \
+    && apt install openssh-server -y
 
 RUN \
     if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
