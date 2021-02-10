@@ -1,4 +1,5 @@
-ARG BUILD_FROM
+
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.1.2
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -18,7 +19,7 @@ COPY requirements.txt /tmp/requirements.txt
 COPY vscode.extensions /root/vscode.extensions
 
 # Setup base system
-ARG BUILD_ARCH
+ARG BUILD_ARCH=amd64
 # hadolint ignore=SC2181
 RUN \
     apt-get update \
@@ -61,18 +62,31 @@ RUN \
 RUN \
     curl https://get.docker.com | sh 
 
-RUN \
-    curl https://bootstrap.pypa.io/get-pip.py | python3 \
-    \
-    && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-    && apt-get --no-install-recommends install -y nodejs \
-    \
+#RUN \
+    #curl https://bootstrap.pypa.io/get-pip.py | python3 \
+    #\
+    #&& curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    #&& apt-get --no-install-recommends install -y nodejs \
+    #\
     #&& curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     #&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     #&& apt-get update && apt-get install yarn 
-    && npm install -g yarn
-RUN yarn global add code-server 
+    #&& npm install -g yarn
+#RUN yarn global add code-server 
 
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3 \
+    \
+    && if [[ "${BUILD_ARCH}" = "aarch64" ]]; then ARCH="arm64"; fi \
+    && if [[ "${BUILD_ARCH}" = "amd64" ]]; then ARCH="amd64"; fi \
+    && curl -J -L -o /tmp/code.tar.gz \
+        "https://github.com/cdr/code-server/releases/download/v3.8.1/code-server-3.8.1-linux-${ARCH}.tar.gz" \
+    && mkdir -p /usr/local/lib/code-server \
+    && tar zxvf \
+        /tmp/code.tar.gz \
+        --strip 1 -C /usr/local/lib/code-server \
+    \
+    && ln -s /usr/local/lib/code-server/bin/code-server /usr/local/bin/code-server \
+    && ln -s /usr/local/lib/code-server/bin/code-server /usr/local/bin/code 
 
 RUN mkdir -p /root/.code-server/extensions \
     && uuid=$(uuidgen) \
