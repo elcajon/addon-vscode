@@ -79,7 +79,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3 \
     && if [[ "${BUILD_ARCH}" = "aarch64" ]]; then ARCH="arm64"; fi \
     && if [[ "${BUILD_ARCH}" = "amd64" ]]; then ARCH="amd64"; fi \
     && curl -J -L -o /tmp/code.tar.gz \
-        "https://github.com/cdr/code-server/releases/download/v3.8.1/code-server-3.9.0-linux-${ARCH}.tar.gz" \
+        "https://github.com/cdr/code-server/releases/download/v3.9.0/code-server-3.9.0-linux-${ARCH}.tar.gz" \
     && mkdir -p /usr/local/lib/code-server \
     && tar zxvf \
         /tmp/code.tar.gz \
@@ -112,7 +112,7 @@ RUN mkdir -p /root/.code-server/extensions \
     && ls -la /root/.code-server/extensions/ \
     \
     && curl -L -s -o /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/4.9.0/ha_${BUILD_ARCH}" \
+        "https://github.com/home-assistant/cli/releases/download/4.10.1/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha \
     \
     && git clone --branch master --single-branch --depth 1 \
