@@ -102,4 +102,4 @@ eval "$(_HASS_CLI_COMPLETE=source_zsh hass-cli)"
 source <(ha completion --zsh)
 
 # Show motd on start
-cat /etc/motd
+ha banner
