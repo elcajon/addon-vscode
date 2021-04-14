@@ -11,7 +11,7 @@
 
 [![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
-[![GitHub Activity][commits-shield]
+![GitHub Activity][commits-shield]
 
 ## About
 
