@@ -11,7 +11,7 @@
 
 [![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
-[![GitHub Activity][commits-shield]][commits]
+[![GitHub Activity][commits-shield]
 
 ## About
 
@@ -19,8 +19,8 @@ This is an VSCode add-on for Home Assistant.
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
+[armhf-shield]: https://img.shields.io/badge/armhf-no-red.svg
+[armv7-shield]: https://img.shields.io/badge/armv7-no-red.svg
 [commits-shield]: https://img.shields.io/github/commit-activity/y/elcajon/addon-vscode.svg
 [commits]: https://github.com/elcajon/addon-vscode/commits/main
 [contributors]: https://github.com/elcajon/addon-vscode/graphs/contributors
@@ -35,7 +35,7 @@ This is an VSCode add-on for Home Assistant.
 [github-actions]: https://github.com/elcajon/addon-vscode/actions
 [github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
 [github-sponsors]: https://github.com/sponsors/frenck
-[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+[i386-shield]: https://img.shields.io/badge/i386-no-red.svg
 [issue]: https://github.com/elcajon/addon-vscode/issues
 [license-shield]: https://img.shields.io/github/license/elcajon/addon-vscode.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2021.svg
