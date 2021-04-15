@@ -30,8 +30,8 @@ instantly, without the need for configuring anything.
 
 ## Other Features
 
-Basic image based on offical Home-Assistant Visual Studio Code Add-On with the following additional packages:
-
+Basic image based on offical Home-Assistant Visual Studio Code Add-On 
+with the following additional packages:
 - Host Docker access
 - Material Design theme & icons pre-installed
 - SSH server for remote connection
