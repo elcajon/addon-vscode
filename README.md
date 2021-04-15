@@ -29,12 +29,13 @@ and pre-configured right out of the box. This means that auto-completion works
 instantly, without the need for configuring anything.
 
 ## Other Features
-Basic image based on offical Home-Assistant Visual Studio Code Add-On with the following additional packages: 
 
-* Host Docker access 
-* Material Design theme & icons pre-installed 
-* SSH server for remote connection
-* Cron installed
+Basic image based on offical Home-Assistant Visual Studio Code Add-On with the following additional packages:
+
+- Host Docker access
+- Material Design theme & icons pre-installed
+- SSH server for remote connection
+- Cron installed
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
