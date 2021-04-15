@@ -56,7 +56,6 @@ with the following additional packages:
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2021.svg
 [patreon-shield]: https://frenck.dev/wp-content/uploads/2019/12/patreon.png
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
-[reddit]: https://reddit.com/r/homeassistant
 [releases-shield]: https://img.shields.io/github/release/elcajon/addon-vscode.svg
 [releases]: https://github.com/elcajon/addon-vscode/releases
 [repository]: https://github.com/hassio-addons/repository
