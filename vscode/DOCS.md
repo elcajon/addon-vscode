@@ -63,7 +63,7 @@ single time this add-on starts.
 
 ---
 
-### Option: `ssh`: `authorized_keys`
+#### Option: `ssh`: `authorized_keys`
 
 Add one or more public keys to your SSH server to use with authentication. This is the recommended over setting a password.
 Attention: SSH service will only be enabled when assigning external port to 22/tcp.
