@@ -1,4 +1,4 @@
-# Home Assistant Add-on: Visual Studio Code - armv7/aarch64 Version
+# Home Assistant Add-on: Visual Studio Code
 
 This add-on runs Visual Studio Code, allowing you to edit your Home Assistant
 configuration directly from your web browser and can be embedded straight
@@ -65,7 +65,8 @@ single time this add-on starts.
 
 #### Option: `ssh`: `authorized_keys`
 
-Add one or more public keys to your SSH server to use with authentication. This is the recommended over setting a password.
+Add one or more public keys to your SSH server to use with authentication. 
+This is the recommended over setting a password.
 Attention: SSH service will only be enabled when assigning external port to 22/tcp.
 
 #### Option `ssh`: `compatibility_mode`
