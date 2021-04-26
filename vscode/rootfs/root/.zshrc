@@ -63,6 +63,7 @@ plugins=(
     zsh-syntax-highlighting
 )
 
+# shellcheck source=$ZSH/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
