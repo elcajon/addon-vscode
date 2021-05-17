@@ -1,5 +1,5 @@
 
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.1.4
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.2.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -79,7 +79,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3 \
     && if [[ "${BUILD_ARCH}" = "aarch64" ]]; then ARCH="arm64"; fi \
     && if [[ "${BUILD_ARCH}" = "amd64" ]]; then ARCH="amd64"; fi \
     && curl -J -L -o /tmp/code.tar.gz \
-        "https://github.com/cdr/code-server/releases/download/v3.9.3/code-server-3.9.3-linux-${ARCH}.tar.gz" \
+        "https://github.com/cdr/code-server/releases/download/v3.10.0/code-server-3.10.0-linux-${ARCH}.tar.gz" \
     && mkdir -p /usr/local/lib/code-server \
     && tar zxvf \
         /tmp/code.tar.gz \
