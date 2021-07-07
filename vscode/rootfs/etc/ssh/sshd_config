@@ -63,7 +63,7 @@ PrintMotd no
 
 # SFTP
 =====================
-#Subsystem sftp /usr/lib/ssh/sftp-server
+Subsystem sftp /usr/lib/ssh/sftp-server
 
 # Misc
 # ===================
