@@ -103,4 +103,6 @@ eval "$(_HASS_CLI_COMPLETE=source_zsh hass-cli)"
 source <(ha completion --zsh)
 
 # Show motd on start
-ha banner
+if [ ! -n "$SSH_CLIENT" ] || [ ! -n "$SSH_TTY" ]; then
+  ha banner
+fi
